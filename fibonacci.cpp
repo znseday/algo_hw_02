@@ -32,6 +32,9 @@ uint64_t ConvertVectorToUint64(const vector<string> &_data)
 
 uint64_t FibonacciRecursive(uint64_t N)
 {
+    if (N == 0)
+        return 0;
+
     if (N <= 2)
         return 1;
 
@@ -60,7 +63,9 @@ string Fibonacci_iter::Run(const vector<string> &_data)
 
     uint64_t res;
 
-    if (N <= 2)
+    if (N == 0)
+        res = 0;
+    else if (N <= 2)
         res = 1;
     else
     {
@@ -88,6 +93,9 @@ string Fibonacci_gold::Run(const vector<string> &_data)
         return "_data.empty()";
 
     uint64_t N = ConvertVectorToUint64(_data);
+
+    if (N == 0)
+        return to_string(0);
 
     long double phi = (1.0l + sqrt(5.0l))/2.0l;
 
@@ -136,6 +144,9 @@ string Fibonacci_matrix::Run(const vector<string> &_data)
         return "_data.empty()";
 
     uint64_t N = ConvertVectorToUint64(_data);
+
+    if (N == 0)
+        return to_string(0);
 
     Matrix2D res;
     res.SetIdentity();
